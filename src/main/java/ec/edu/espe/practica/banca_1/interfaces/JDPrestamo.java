@@ -7,6 +7,7 @@ package ec.edu.espe.practica.banca_1.interfaces;
 
 import ec.edu.espe.practica.banca_1.clases.Clientes;
 import ec.edu.espe.practica.banca_1.clases.Cuenta;
+import ec.edu.espe.practica.banca_1.clases.Prestamo;
 import javax.swing.JOptionPane;
 
 /**
@@ -80,6 +81,11 @@ public class JDPrestamo extends javax.swing.JDialog {
         lblContrasenia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblContrasenia.setText("Ingrese Cédula:");
 
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
         txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCedulaKeyTyped(evt);
@@ -189,11 +195,7 @@ public class JDPrestamo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
-        // TODO add your handling code here:
-        if(obj.validarCedula(txtCedula.getText()) == false){
-            JOptionPane.showMessageDialog(null, "Cédula incorrecta");
-            txtCedula.setText("");
-        }
+   
     }//GEN-LAST:event_txtCedulaKeyTyped
 
     private void txtSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoActionPerformed
@@ -208,8 +210,14 @@ public class JDPrestamo extends javax.swing.JDialog {
 
     private void btnPrestamoSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamoSolicitarActionPerformed
         // TODO add your handling code here:
+        Prestamo objPrestamo= new Prestamo(0,0);
+        objPrestamo.monto();
       
     }//GEN-LAST:event_btnPrestamoSolicitarActionPerformed
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
     /**
      * @param args the command line arguments

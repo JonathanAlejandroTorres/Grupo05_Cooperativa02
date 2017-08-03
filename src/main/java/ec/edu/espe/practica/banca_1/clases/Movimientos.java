@@ -78,8 +78,8 @@ public class Movimientos {
         this.saldo = saldo;
     }
 
-    public int generarCodigo(JTextField codi) {
-        int codigo = 0;
+    public void generarCodigo(JTextField codi) {
+     
         String cod = "0";
         try {
             resultado = conn.ejecutarSQLSelect("Select max(CODIGO_MOVIMIENTO) from movimiento");
@@ -88,16 +88,21 @@ public class Movimientos {
             }
             codigo = Integer.parseInt(cod);
             codigo++;
+            System.out.println("esteeee valor "+codigo);
             codi.setText(String.valueOf(codigo));
         } catch (SQLException ex) {
         }
-        return codigo;
+       
     }
 
     public void registrarMov(JTextField saldo) {
+    
         float nuevoS = validarMonto(monto, tipo);
-        conn.ejecutarSQL("INSERT INTO movimiento(CODIGO_MOVIMIENTO,CODIGO_CUENTA,TIPO,FECHA,MONTO,SALDO)"
-                + "VALUES ('" + codigo + "','" + cod_cuenta + "','" + tipo + "','" + currentTime + "','" + monto + "','" + nuevoS + "')");
+        System.out.println("");
+        System.out.println("el valor se cambia"+codigo);
+      //  conn.ejecutarSQLInsert("INSERT INTO movimiento(CODIGO_MOVIMIENTO,CODIGO_CUENTA,TIPO,FECHA,MONTO,SALDO)"
+        //        + "VALUES ('" + codigo + "','" + cod_cuenta + "','" + tipo + "','" + currentTime + "','" + monto + "','" + nuevoS + "')");
+        conn.ejecutarSQLInsert(codigo,cod_cuenta ,tipo , currentTime , monto, nuevoS);
         conn.ejecutarSQL("UPDATE CUENTA SET SALDO ='" + nuevoS + "' WHERE CODIGO_CUENTA = '" + cod_cuenta + "'");
         JOptionPane.showMessageDialog(null, "Registro realizado con éxito \n Su nuevo Saldoes: " + nuevoS);
         saldo.setText(String.valueOf(nuevoS));
