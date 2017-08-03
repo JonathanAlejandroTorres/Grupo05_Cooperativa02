@@ -63,11 +63,11 @@ public class Conexion {
         return resultado;
     }
 
-    public void ejecutarSQLInsert(int cod, String cod_cuen, String tipo, String fecha, float monto, float saldo) {
+    public void ejecutarSQLInsert(String cod, String cod_cuen, String tipo, String fecha, float monto, float saldo) {
         System.out.println("cuenta"+cod);
         try {
             PreparedStatement cs = conexion.prepareStatement("INSERT INTO movimiento(CODIGO_MOVIMIENTO,CODIGO_CUENTA,TIPO,FECHA,MONTO,SALDO)VALUES(?,?,?,?,?,?)");
-            cs.setInt(1, cod);
+            cs.setString(1, cod);
             cs.setString(2, cod_cuen);
             cs.setString(3, tipo);
             cs.setString(4, fecha);

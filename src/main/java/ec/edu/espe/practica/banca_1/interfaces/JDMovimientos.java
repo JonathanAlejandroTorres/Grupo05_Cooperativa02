@@ -376,7 +376,7 @@ public class JDMovimientos extends javax.swing.JDialog {
         float monto = Float.parseFloat(txtMonto.getText());
         txtSaldo.setText("0.00");
         Movimientos obj = new Movimientos(txtCodigoCuenta.getText(),tipo,monto,Float.parseFloat(txtSaldo.getText()));
-        obj.registrarMov(txtSaldo);
+        obj.registrarMov(txtSaldo,txtCodigo.getText());
     }//GEN-LAST:event_btnMovGuardarActionPerformed
 
     private void btnMovNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovNuevoActionPerformed
